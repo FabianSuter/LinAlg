@@ -1,0 +1,177 @@
+    
+		 \section{Matritzenzerlegung}
+		 Matritzen werden aus den folgenden Gründen zerlegt: \\
+		 \begin{tabular}{ll}
+		 $\bullet$ &  schwierige Matrix in einfachere Matritzen aufteilen \\
+		 $\bullet$ & Vereinfachung schwieriger Berechnungen \\
+		 & z.B. Eigenwertzerlegung $A = T^{-1} A' T$ \\
+		 $\bullet$ & Verienfachte Berechnung der Determinanten 
+		 \end{tabular}
+		 
+		 \vfill\null
+		 \columnbreak
+		 
+		 
+		    \subsection{LU-Zerlegung $(A = L \cdot U)$}
+			Rechnung: \quad  $\det(A) =  \det(L) \cdot \det(U)$ \\ 
+			$L$ = Matrix bestehnd aus Pivot-Spalten (oben rechts Nullen) \\
+			$U$ = Diagonale mit 1en, oben rechts Elemente von Gauss ohne Rückwärts-Einsetzen, unten rechts Nullen \\	
+			
+			\subsubsection{Beispiel LU-Zerlegung}
+			
+			$A = \begin{pmatrix}	3 & 3 & -3 \\ -6 & -4 & 2 \\ 3 & 13 & -18 \end{pmatrix}$ \qquad $\rightarrow$ Gauss-Algorithmus durchführen \\
+			\vspace{0.3cm}
+			
+			\begin{minipage}{0.25\linewidth}
+			\begin{tabular}{|c c c|}
+			\hline
+			\textcolor{blue}3 & 3 & -3 \\
+			\textcolor{blue}{-6} & -4 & 2 \\
+			\textcolor{blue}3 & 13 & -18 \\
+			\hline
+			\end{tabular}
+			\end{minipage}	
+			\hfill
+			\begin{minipage}{0.25\linewidth}
+			\begin{tabular}{|c c c|}
+			\hline
+			1 & 1 & -1 \\
+			0 & \textcolor{orange}2 & -4 \\
+			0 & \textcolor{orange}{10} & -15 \\
+			\hline
+			\end{tabular}
+			\end{minipage}		
+			\hfill
+			\begin{minipage}{0.25\linewidth}
+			\begin{tabular}{|c c c|}
+			\hline
+			1 & 1 & -1 \\
+			0 & 1 & -2 \\
+			0 & 0 & \textcolor{green}5 \\
+			\hline
+			\end{tabular}
+			\end{minipage}	
+			
+			\vspace{0.3cm}
+			
+			\begin{minipage}{0.25\linewidth}
+			\begin{tabular}{|c c c|}
+			\hline
+			\textcolor{violet}1 & \textcolor{violet}1 & \textcolor{violet}{-1} \\
+			0 & \textcolor{violet}1 & \textcolor{violet}{-2} \\
+			0 & 0 & \textcolor{violet}1 \\
+			\hline
+			\end{tabular}
+			\end{minipage}	
+			\hfill
+			\begin{minipage}{0.65\linewidth}
+			$L = \begin{pmatrix} \textcolor{blue}3 & 0 & 0 \\ \textcolor{blue}{-6} & \textcolor{orange}2 & 0 \\ \textcolor{blue}3 & \textcolor{orange}{10} & \textcolor{green}5   \end{pmatrix}$ \quad $U = \begin{pmatrix} \textcolor{violet}1 & \textcolor{violet}1 & \textcolor{violet}{-1} \\ 0 & \textcolor{violet}1 & \textcolor{violet}{-2} \\ 0 & 0 & \textcolor{violet}1  
+			 \end{pmatrix}$
+			\end{minipage}				    
+		    
+		    
+		    
+		    
+		    \subsection{LR-Zerlegung $(A = L' \cdot R)$}
+		    Die LR-Zerlegung (bzw. L'R-Zerlegung)  entsteht aus der \\
+		    LU-Zerlegung \\
+		    
+		    Rechnung: \quad  $\det(A) =  \det(L') \cdot \det(R)$ \\ 
+			$L' = L D^{-1} $ \\
+			$R = DU$ \\
+			$D$ = Diagonalmatrix mit den Pivot-Elementen 
+			
+			
+			\subsubsection{Beispiel LR-Zerlegung}
+			Fortsetzung des Beispiels der LU-Zerlegung! \\
+			\\
+			$D = \begin{pmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 5  \end{pmatrix}$ \quad $D^{-1} = \begin{pmatrix} \frac{1}{3} & 0 & 0 \\ 0 & \frac{1}{2} & 0 \\ 0 & 0 & \frac{1}{5}  \end{pmatrix}$ \\
+			
+			\vspace{0.3cm}
+			
+			$L' = L D^{-1} = \begin{pmatrix} 3 & 0 & 0 \\ -6 & 2 & 5 \\ 3 & 10 & 5   \end{pmatrix}  \begin{pmatrix} \frac{1}{3} & 0 & 0 \\ 0 & \frac{1}{2} & 0 \\ 0 & 0 & \frac{1}{5}  \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ -2 & 1 & 0 \\ 1 & 5 & 1   \end{pmatrix}$ \\
+			
+			\vspace{0.3cm}
+			
+			$R = DU = \begin{pmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 5  \end{pmatrix}  \begin{pmatrix} 1 & 1 & -1 \\ 0 & 1 & -2 \\ 0 & 0 & 1  \end{pmatrix}$
+			
+			
+			\vfill\null
+			\columnbreak
+			
+			
+			
+			\subsection{Cholesky-Zerlegung $(A = L L^t)$}
+			\begin{tabular}{ll}
+			$\bullet$ & Cholesky-Zerlegung existiert nur für \textbf{positiv} \\
+			& \textbf{definite, quadratische} Matritzten! \\
+			$\bullet$ & Matritzen mit negativer Determinante haben keine\\ 
+			& Cholesky-Zerlegung \\
+			$\bullet$ & Matritzen mit Cholesky-Zerlegung haben Eigenwerte $\lambda_i > 0$ \\
+			$\bullet$ & Cholesky-Zerlegung entspricht ''Wurzel ziehen'' \\
+			\end{tabular}
+			
+			$$\det(L L^t) = \det(L)^2 > 0 $$ 
+			
+			\subsubsection{Beispiel Cholesky-Zerlegung}
+			Die Matritzen $L$ und $L^t$ werden durch ausprobieren gefunden \\
+			Als Vorbereitung überall wo Nullen stehen müssen, die Nullen einfüllen!\\
+			Anschliessend Schritt für Schritt die benötigten Werte berechnen\\
+			\\
+			$A = L L^t = \begin{pmatrix} 4 & 6 & -4 \\ 6 & 10 & -7 \\ -4 & -7 & 6  \end{pmatrix} = \begin{pmatrix} \textcolor{blue}{2} & 0 & 0 \\ \textcolor{red}{3} & \textcolor{orange}{1} & 0 \\ \textcolor{green}{-2} & \textcolor{violet}{-1} & \textcolor{teal}{1}  \end{pmatrix} \begin{pmatrix} \textcolor{blue}{2} & \textcolor{red}{3} & \textcolor{green}{-2} \\ 0 & \textcolor{orange}{1} & \textcolor{violet}{-1} \\ 0 & 0 & \textcolor{teal}{1}  \end{pmatrix} $\\
+			
+			\vspace{0.2cm}
+			
+			\textbf{Berechnung der Werte (Dokumentation Lösungsweg)} \\
+			
+			
+			\begin{tabular}{lll}
+			$L_{11} = L_{11}^t$ &  $? \cdot ? = ?^2 = 4$ & $? = \sqrt{4} = \textcolor{blue}{2}$ \\ 
+			\\
+			$L_{21} = L_{12}^t$ & $\textcolor{blue}{2} \cdot ? = 6$ & $? = 6 / \textcolor{blue}{2} = \textcolor{red}{3} $ \\
+			\\
+			$L_{31} = L_{13}^t$ & $\textcolor{blue}{2} \cdot ? = -4$ & $? = -4 / \textcolor{blue}{2} = \textcolor{green}{-2} $ \\
+			\\
+			$L_{22} = L_{22}^t$ & $\textcolor{red}{3}^2 + ?^2 = 10$ & $? = \sqrt{10 - \textcolor{red}{3}^2 } = \textcolor{orange}{1}$ \\	
+			\\
+			$L_{32} = L_{23}^t$ & $ \textcolor{green}{-2} \cdot \textcolor{red}{3} + \textcolor{orange}{1} \cdot ? = -7 $ & $? = \frac{-7 - (\textcolor{green}{-2}) \cdot \textcolor{red}{3}}{\textcolor{orange}{1}} = \textcolor{violet}{-1} $ \\	
+			\\
+			$L_{33} = L_{33}^t$ &$\textcolor{green}{-2}^2 + \textcolor{violet}{-1}^2 + ?^2 = 6 $ & $ ? = \sqrt{6 - (\textcolor{green}{-2})^2 - (\textcolor{violet}{-1})^2} = \textcolor{teal}{1}$ \\			
+			\end{tabular}
+
+				
+				
+				
+				
+		    \subsection{QR-Zerlegung $A = Q \cdot R$}
+		    \begin{tabular}{ll}
+		    $Q$ = & orthagonale Matrix; Spalten sind mit Gram-Schmidt\\
+		          & orthagonalisierte Spalten der Matrix $A$ \\
+		    $R$ = & obere Dreiecksmatrix mit Koeffizienten der  \\
+		    		  & Linearkombination von Spalten von $Q$ \\   
+		    \end{tabular}
+		    
+			$$R = Q^{-1} A = Q^t A$$    
+			
+			
+			\subsubsection{Beispiel QR-Zerlegung}
+		  	$A = \begin{pmatrix} 3 & 5 \\ 4 & 7 \end{pmatrix}$ \quad $\vec{a_1} = \begin{pmatrix}
+		  	3 \\ 4 \end{pmatrix}$ \quad $\vec{a_2} = \begin{pmatrix} 5 \\ 7 \end{pmatrix}$ \\
+		  	
+		  	\vspace{0.2cm}
+		  	
+		  	
+		  	$\vec{b_1} = \frac{\vec{a1}}{\vert \vec{a_1} \vert} = \frac{1}{5} \begin{pmatrix} 3 \\ 4 \end{pmatrix} $ \quad $\vec{b_2} = \frac{\vec{a2} - (\vec{b_1} \bullet \vec{a_2}) \cdot \vec{b_1}}{\vert \vec{a2} - (\vec{b_1} \bullet \vec{a_2}) \cdot \vec{b_1} \vert} = \frac{1}{5} \begin{pmatrix} -4 \\ 3 \end{pmatrix} $ \\
+		  	
+		  	\vspace{0.2cm}
+		  	
+		  	$Q = \frac{1}{5} \begin{pmatrix} 3 & -4 \\ 4 & 3 \end{pmatrix} 	 $ \\
+		  	
+		  	\vspace{0.2cm}
+		  	
+		  	$R = Q^{-1} A = Q^t A = \frac{1}{5}\begin{pmatrix} 3 & 4 \\ -4 & 3 \end{pmatrix}  \begin{pmatrix} 3 & 5 \\ 4 & 7 \end{pmatrix} =  \begin{pmatrix} 5 & \frac{43}{5} \\ 0 & \frac{1}{5}  \end{pmatrix} $
+		  	
+		    
+		    
+		    \vfill\null
+		    \columnbreak
