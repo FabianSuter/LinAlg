@@ -36,14 +36,9 @@
  			\includegraphics[width=0.7\linewidth]{Bilder/flaeche-det} \\
 			
 			
-			\subsubsection{Volumen}				    
+			\subsubsection{Volumen}
 		    Orientiertes Volumen eines Parallelepipeds (Spat) aufgespannt durch die Vektoren $\vec{a}$, $\vec{b}$ und $\vec{c}$ \\
 			\includegraphics[width=0.9\linewidth]{Bilder/volumen-det} \\
-				
-				
-				
-			\hfill\null	
-			\columnbreak	
 			
 			
 							
@@ -52,23 +47,26 @@
 			Die Determinante kann mithilfe des Gauss-Algorithmus berechnet werden. Die Determinante ist das \textbf{Produkt} aller Pivot-Elemente. \\
 			(Rückwärts-Einsetzen beim Gauss-Verfahren nicht nötig) \\
 			\\
-			 \includegraphics[width=0.8\linewidth]{Bilder/wert-determinante}
+			 \includegraphics[width=0.7\linewidth]{Bilder/wert-determinante}
 			 
 
 		    \subsection{Sarrus}
-		    \subsubsection{2 x 2 Matrix}
+			\begin{minipage}{0.4\linewidth}
+		    \textbf{2 x 2 Matrix}\\
 		    $\det(A) \quad= 	\begin{vmatrix}
 		    				a & b \\
 		    				c & d
-		    				\end{vmatrix}$ =  $ad - bc$ \\
-		    	
-		    	\subsubsection{3 x 3 Matrix}
+		    				\end{vmatrix} \\ $ =  $ad - bc$ \\
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.6\linewidth}
+		    \textbf{3 x 3 Matrix}\\
 		    $\det(A) \quad= 	\begin{vmatrix}
 		    					a & b &c \\
 		    					d & e & f\\
 		    					g & h & i
-		    				\end{vmatrix}$ =  $aei + bfg + cdh - ceg - afh - bdi$ \\
-		    				
+		    				\end{vmatrix} \\ $ =  $aei + bfg + cdh - ceg - afh - bdi$ \\
+			\end{minipage}				
 		    				
 		    \subsection{Rechenregeln für die Determinante}
 			\begin{tabular}{ll}
@@ -106,7 +104,7 @@
 		    \end{tabular}
 
 			
-		    \textbf{Vorzeichenmatrix} \\
+		    \textbf{Vorzeichenmatrix} 
 		    
 		    \begin{tabular}{| c | c | c | c |}
 		    \hline
@@ -129,7 +127,7 @@
 		    		8 & 8 & 10 & 1 \\
 		    		\end{pmatrix}$ \\
 		    		
-		    	\vspace{0.3cm}
+		    	%\vspace{0.3cm}
 			
 			$\begin{vmatrix}
 		    	\color{blue}4 & \color{blue}0 & \color{blue}7 & \color{blue}0 \\
@@ -172,13 +170,7 @@
 			Jede Unbekannte x wird durch Determinanten berechnet. \\
 			\\
 			$\rightarrow$ Es müssen n-1 Determinanten berechnet werden!	 \\
-			
-			\vfill\null
-			\columnbreak
-			
-			
-			
-			
+
 			\subsubsection{Beispiel Cramersche Regel}
 			$A = \begin{pmatrix}
 				-1 & -3 & 0 \\

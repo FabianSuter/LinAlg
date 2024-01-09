@@ -28,6 +28,7 @@
 % define some colors
 \definecolor{section}{RGB}{150,101,203}
 \definecolor{subsection}{RGB}{178,166,216}
+\definecolor{subsubsection}{RGB}{209,201,232}
 \definecolor{titletext}{RGB}{0,0,0}
 
 % section color box
@@ -59,6 +60,21 @@
 		\end{minipage}%
 }}
 
+% subsubsection color box
+\setkomafont{subsubsection}{\mysubsubsection}
+\newcommand{\mysubsubsection}[1]{%
+	\sf%
+	\setlength{\fboxsep}{0cm}%already boxed
+	\colorbox{subsubsection}{%
+		\begin{minipage}{\linewidth}%
+			\vspace*{1pt}%Space before
+			\leftskip2pt %Space left
+			\rightskip\leftskip %Space right
+			{\color{titletext} #1}
+			\vspace*{1pt}%Space after
+		\end{minipage}%
+}}
+
 				
 \providecommand{\diff}{\mathop{} \! \mathrm{d}}
 
@@ -66,16 +82,15 @@
 
 
 \title{Lineare Algebra Einführung}
-\subtitle{HS 2021 Prof. Dr. Andreas Müller}
-\author{Simone Stitz, \today}
-\date{{\small \url{https://gitlab.com/sstitz/lineare-algebra}}}
+\subtitle{HS 2023 Prof. Dr. Andreas Müller}
+\author{Fabian Suter, \today}
+\date{{\small \url{https://github.com/FabianSuter/LinAlg}}}
  
  
 \begin{document}
 	\begin{multicols*}{3}
 	
 		\maketitle
-		
 		
 		\input{Sections/01_Lineare_Gleichungssysteme.tex}
 		\input{Sections/02_Determinante.tex}
@@ -84,8 +99,6 @@
 		\input{Sections/05_Eigenwerte_Eigenvektoren.tex}
 		\input{Sections/06_Matritzenzerlegung.tex}
 		\input{Sections/07_Anhang.tex}
-		
-
-		    
+			    
 	\end{multicols*}
 \end{document}
